@@ -1,9 +1,10 @@
 import uuid
 from confluent_kafka import Producer, Consumer, KafkaError, KafkaException
 
-
+#Creation topic
 topic = 'dlq-lcc-p2dmy'
 
+#Initialisation du producer
 p = Producer({
     'bootstrap.servers':'pkc-lq8v7.eu-central-1.aws.confluent.cloud:9092',
     'sasl.mechanism':'PLAIN',
@@ -23,7 +24,7 @@ def acked(err, msg):
 p.produce(topic, key="key", value="value", callback=acked)
 p.poll(10)
 
-
+#Initialisation du consumer
 c = Consumer({
     'bootstrap.servers': 'pkc-lq8v7.eu-central-1.aws.confluent.cloud:9092',
     'sasl.mechanism': 'PLAIN',
