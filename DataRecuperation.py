@@ -57,4 +57,7 @@ def basic_consume_loop(c, topic):
     finally:
         c.close()
 
+def shutdown():
+    running=False
+
 
